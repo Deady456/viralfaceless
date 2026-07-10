@@ -29,39 +29,39 @@
       <div class="space-y-5">
         <div>
           <label class="block text-sm font-medium mb-1">Nama Kamu</label>
-          <input type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Nama lengkap">
+          <input id="name" type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Nama lengkap">
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium mb-1">Email</label>
-            <input type="email" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="email@example.com">
+            <input id="email" type="email" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="email@example.com">
           </div>
           <div>
             <label class="block text-sm font-medium mb-1">WhatsApp</label>
-            <input type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="08xxxxxxxxxx">
+            <input id="wa" type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="08xxxxxxxxxx">
           </div>
         </div>
         <div>
           <label class="block text-sm font-medium mb-1">Nama Channel YouTube (jika sudah ada)</label>
-          <input type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Kosongkan jika buat baru">
+          <input id="channel" type="text" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Kosongkan jika buat baru">
         </div>
         <div>
           <label class="block text-sm font-medium mb-1">Topik / Niche yang Diinginkan</label>
-          <textarea rows="3" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Contoh: fakta sains, misteri, sejarah, teknologi, anime, dll"></textarea>
+          <textarea id="niche" rows="3" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Contoh: fakta sains, misteri, sejarah, teknologi, anime, dll"></textarea>
         </div>
         <div>
           <label class="block text-sm font-medium mb-1">Paket</label>
-          <select class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none">
-            <option value="basic">Basic — Rp149.000 (suara standar)</option>
-            <option value="pro">Pro — Rp249.000 (suara premium)</option>
+          <select id="paket" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none">
+            <option value="Basic - Rp149.000">Basic — Rp149.000 (suara standar)</option>
+            <option value="Pro - Rp249.000">Pro — Rp249.000 (suara premium)</option>
           </select>
         </div>
         <div>
           <label class="block text-sm font-medium mb-1">Pesan Tambahan</label>
-          <textarea rows="2" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Ada request khusus?"></textarea>
+          <textarea id="notes" rows="2" class="w-full border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Ada request khusus?"></textarea>
         </div>
       </div>
-      <button onclick="submitForm()" class="gradient text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 w-full mt-6 text-lg">Kirim Permintaan</button>
+      <button onclick="sendWA()" class="gradient text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 w-full mt-6 text-lg">Kirim ke WhatsApp</button>
       <p class="text-xs text-gray-400 text-center mt-4">Kami akan hubungi kamu via WhatsApp dalam 1x24 jam.</p>
     </div>
 
@@ -92,12 +92,26 @@
   </footer>
 
   <script>
-    function submitForm() {
-      const btn = document.querySelector('button');
-      btn.textContent = 'Terkirim! Kami akan hubungi kamu.';
-      btn.disabled = true;
-      btn.classList.remove('hover:opacity-90');
-      btn.classList.add('opacity-75');
+    function sendWA() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const wa = document.getElementById('wa').value.trim();
+      const channel = document.getElementById('channel').value.trim();
+      const niche = document.getElementById('niche').value.trim();
+      const paket = document.getElementById('paket').value;
+      const notes = document.getElementById('notes').value.trim();
+      if (!name || !wa) { alert('Nama dan WhatsApp wajib diisi.'); return; }
+      const msg = encodeURIComponent(
+        `Halo, saya ingin setup channel faceless.\n\n` +
+        `Nama: ${name}\n` +
+        `Email: ${email || '-'}\n` +
+        `WhatsApp: ${wa}\n` +
+        `Channel YT: ${channel || '(baru)'}\n` +
+        `Topik: ${niche || '-'}\n` +
+        `Paket: ${paket}\n` +
+        `Catatan: ${notes || '-'}`
+      );
+      window.open(`https://wa.me/6282142448254?text=${msg}`, '_blank');
     }
   </script>
 </body>
