@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup Wizard — FreeFaceless</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .gradient-text { background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-indicator { transition: all 0.3s; }
+    .step-dot.active { background: linear-gradient(135deg, #667eea, #764ba2); border-color: transparent; }
+    .step-dot.done { background: #10b981; border-color: transparent; }
+    .copy-btn:hover { opacity: 0.9; }
+    .fade-in { animation: fadeIn 0.4s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <nav class="bg-white shadow-sm border-b">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold"><span class="gradient-text">Free</span>Faceless</a>
+      <span class="text-sm text-gray-500">Setup Wizard</span>
+    </div>
+  </nav>
+
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <!-- Progress -->
+    <div class="flex items-center justify-between mb-8 max-w-xl mx-auto">
+      <div class="flex items-center gap-1">
+        <div class="step-dot active w-8 h-8 rounded-full border-2 border-purple-500 flex items-center justify-center text-xs font-bold text-white" data-step="1">1</div>
+        <div class="w-8 h-0.5 bg-gray-200 step-indicator" id="line1"></div>
+      </div>
+      <div class="flex items-center gap-1">
+        <div class="step-dot w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400" data-step="2">2</div>
+        <div class="w-8 h-0.5 bg-gray-200 step-indicator" id="line2"></div>
+      </div>
+      <div class="flex items-center gap-1">
+        <div class="step-dot w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400" data-step="3">3</div>
+        <div class="w-8 h-0.5 bg-gray-200 step-indicator" id="line3"></div>
+      </div>
+      <div class="flex items-center gap-1">
+        <div class="step-dot w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400" data-step="4">4</div>
+        <div class="w-8 h-0.5 bg-gray-200 step-indicator" id="line4"></div>
+      </div>
+      <div class="flex items-center gap-1">
+        <div class="step-dot w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400" data-step="5">5</div>
+      </div>
+    </div>
+    <div class="flex justify-between text-xs text-gray-400 mb-8 max-w-xl mx-auto px-2">
+      <span>Topik</span><span>Config</span><span>GitHub</span><span>YouTube</span><span>Selesai</span>
+    </div>
+
+    <!-- Step 1: Topik -->
+    <div class="step active fade-in" id="step1">
+      <div class="bg-white rounded-2xl shadow-sm border p-8">
+        <h2 class="text-2xl font-bold mb-2">Tentukan Channel Kamu</h2>
+        <p class="text-gray-500 text-sm mb-6">Isi info channel YouTube faceless yang mau dibuat.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Topik / Niche</label>
+            <textarea id="niche" rows="2" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="Contoh: fakta sains dan teknologi yang mengejutkan (AI, robot, penemuan terbaru, tips teknologi)">fakta sains dan teknologi yang mengejutkan (AI, robot, penemuan terbaru, tips teknologi)</textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Target Audiens</label>
+            <input id="audience" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" value="orang dewasa Indonesia yang penasaran dan suka belajar hal baru">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Nama Channel YouTube</label>
+              <input id="channelName" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" placeholder="tanpa spasi, contoh: sainstek" value="sainstek">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Bahasa</label>
+              <select id="language" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none">
+                <option value="id">Indonesia</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Durasi Video (detik)</label>
+            <input id="duration" type="number" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" value="60">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Tags (pisahkan koma)</label>
+            <input id="tags" class="w-full border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none" value="fakta unik, pengetahuan, edukasi, sains, teknologi, viral">
+          </div>
+        </div>
+        <div class="flex justify-end mt-6">
+          <button onclick="nextStep()" class="gradient text-white font-semibold px-6 py-2.5 rounded-lg hover:opacity-90">Lanjut</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Config YAML -->
+    <div class="step fade-in" id="step2">
+      <div class="bg-white rounded-2xl shadow-sm border p-8">
+        <h2 class="text-2xl font-bold mb-2">Konfigurasi</h2>
+        <p class="text-gray-500 text-sm mb-4">Copy file <span class="mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">config.yaml</span> ini ke repo kamu.</p>
+        <div class="relative">
+          <pre id="configOutput" class="mono bg-gray-900 text-green-300 text-xs p-4 rounded-xl overflow-x-auto max-h-96 leading-relaxed"></pre>
+          <button onclick="copyConfig()" class="copy-btn absolute top-2 right-2 bg-white/10 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-white/20">Copy</button>
+        </div>
+        <div class="flex justify-between mt-6">
+          <button onclick="prevStep()" class="text-gray-500 font-medium px-4 py-2.5 hover:text-gray-700">Kembali</button>
+          <button onclick="nextStep()" class="gradient text-white font-semibold px-6 py-2.5 rounded-lg hover:opacity-90">Lanjut</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: GitHub Setup -->
+    <div class="step fade-in" id="step3">
+      <div class="bg-white rounded-2xl shadow-sm border p-8">
+        <h2 class="text-2xl font-bold mb-2">Setup GitHub</h2>
+        <p class="text-gray-500 text-sm mb-6">Fork repo dan set secret di GitHub.</p>
+        <div class="space-y-6">
+          <div class="p-4 bg-blue-50 rounded-xl border border-blue-200">
+            <h3 class="font-bold text-sm mb-1">&#10133; Langkah 1: Fork Repo Template</h3>
+            <ol class="text-sm text-gray-700 space-y-1 ml-4 list-decimal">
+              <li>Buka <a href="https://github.com/Deady456/sainstek" target="_blank" class="text-blue-600 underline">github.com/Deady456/sainstek</a></li>
+              <li>Klik tombol <strong>Fork</strong> di kanan atas</li>
+              <li>Beri nama repo: <span id="repoNameDisplay" class="mono bg-gray-200 px-1.5 py-0.5 rounded text-xs font-bold">channel-kamu</span></li>
+              <li>Klik <strong>Create Fork</strong></li>
+            </ol>
+          </div>
+          <div class="p-4 bg-orange-50 rounded-xl border border-orange-200">
+            <h3 class="font-bold text-sm mb-1">&#128274; Langkah 2: Set GitHub Secrets</h3>
+            <p class="text-sm text-gray-600 mb-3">Di repo kamu: Settings → Secrets and variables → Actions → New repository secret</p>
+            <div class="overflow-x-auto">
+              <table class="text-xs w-full">
+                <thead><tr class="bg-gray-100"><th class="text-left p-2 font-medium">Secret</th><th class="text-left p-2 font-medium">Isi</th></tr></thead>
+                <tbody>
+                  <tr class="border-t"><td class="p-2 mono">GROQ_API_KEY</td><td class="p-2 text-gray-600">Dari GroqCloud (gratis)</td></tr>
+                  <tr class="border-t"><td class="p-2 mono">PEXELS_API_KEY</td><td class="p-2 text-gray-600">Dari Pexels (gratis)</td></tr>
+                  <tr class="border-t"><td class="p-2 mono">ELEVENLABS_API_KEYS</td><td class="p-2 text-gray-600"><span class="text-gray-400">(opsional) 20 key dipisah koma</span></td></tr>
+                  <tr class="border-t"><td class="p-2 mono">CLIENT_SECRET_B64</td><td class="p-2 text-gray-600">Base64 client_secret.json</td></tr>
+                  <tr class="border-t"><td class="p-2 mono">TOKEN_<span id="channelUpper1" class="inline">CHANNEL</span>_B64</td><td class="p-2 text-gray-600">Base64 token YouTube</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 rounded-xl border border-green-200">
+            <h3 class="font-bold text-sm mb-1">&#9889; Langkah 3: Trigger Manual</h3>
+            <p class="text-sm text-gray-700">Di repo kamu: Actions → Daily Video Upload → Run workflow. Cek apakah video terupload.</p>
+          </div>
+        </div>
+        <div class="flex justify-between mt-6">
+          <button onclick="prevStep()" class="text-gray-500 font-medium px-4 py-2.5 hover:text-gray-700">Kembali</button>
+          <button onclick="nextStep()" class="gradient text-white font-semibold px-6 py-2.5 rounded-lg hover:opacity-90">Lanjut</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: YouTube -->
+    <div class="step fade-in" id="step4">
+      <div class="bg-white rounded-2xl shadow-sm border p-8">
+        <h2 class="text-2xl font-bold mb-2">Authorize YouTube</h2>
+        <p class="text-gray-500 text-sm mb-6">Hubungkan repo ke channel YouTube kamu.</p>
+        <div class="space-y-4">
+          <div class="p-4 bg-purple-50 rounded-xl border border-purple-200">
+            <h3 class="font-bold text-sm mb-2">&#128187; Cara Authorize (PC)</h3>
+            <pre class="mono bg-gray-900 text-green-300 text-xs p-4 rounded-lg overflow-x-auto">git clone https://github.com/username/<span id="repoNameClone" class="text-yellow-300">channel-kamu</span>
+cd <span id="repoNameClone2" class="text-yellow-300">channel-kamu</span>
+python -m pip install -r requirements.txt
+python -m src.authorize
+# Buka URL yang muncul, login Google, pilih channel</pre>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-xl border">
+            <h3 class="font-bold text-sm mb-2">&#128241; Alternatif (HP + Termux)</h3>
+            <pre class="mono bg-gray-900 text-green-300 text-xs p-4 rounded-lg overflow-x-auto">pkg install python git
+pip install google-auth-oauthlib google-api-python-client
+git clone https://github.com/username/<span id="repoNameTermux" class="text-yellow-300">channel-kamu</span>
+cd <span id="repoNameTermux2" class="text-yellow-300">channel-kamu</span>
+python -m src.authorize</pre>
+          </div>
+          <div class="p-4 bg-yellow-50 rounded-xl border border-yellow-200">
+            <p class="text-sm">Setelah authorize, hasilnya file <span class="mono bg-yellow-100 px-1.5 py-0.5 rounded text-xs">token_<span id="channelLower">channel</span>.json</span>. Encode ke base64 dan set jadi secret <span class="mono bg-yellow-100 px-1.5 py-0.5 rounded text-xs">TOKEN_<span id="channelUpper2">CHANNEL</span>_B64</span> di GitHub.</p>
+          </div>
+          <details class="text-sm border rounded-lg p-4">
+            <summary class="font-medium cursor-pointer">&#128196; Cara encode token ke base64</summary>
+            <pre class="mono bg-gray-900 text-green-300 text-xs p-4 rounded-lg mt-2 overflow-x-auto">powershell -Command "[Convert]::ToBase64String([IO.File]::ReadAllBytes('token_<span id="channelLower3">channel</span>.json'))"</pre>
+          </details>
+        </div>
+        <div class="flex justify-between mt-6">
+          <button onclick="prevStep()" class="text-gray-500 font-medium px-4 py-2.5 hover:text-gray-700">Kembali</button>
+          <button onclick="nextStep()" class="gradient text-white font-semibold px-6 py-2.5 rounded-lg hover:opacity-90">Selesai</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: Done -->
+    <div class="step fade-in" id="step5">
+      <div class="bg-white rounded-2xl shadow-sm border p-8 text-center">
+        <div class="text-6xl mb-4">&#127881;</div>
+        <h2 class="text-2xl font-bold mb-2">Setup Selesai!</h2>
+        <p class="text-gray-500 mb-6">Channel YouTube kamu bakal upload otomatis 3x sehari.</p>
+        <div class="p-4 bg-gray-50 rounded-xl border text-left text-sm space-y-2">
+          <p>&#9989; Repo sudah di-fork</p>
+          <p>&#9989; Secret sudah di-set</p>
+          <p>&#9989; YouTube sudah authorize</p>
+          <p>&#9989; Cronjob trigger 3x sehari</p>
+        </div>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="https://github.com" target="_blank" class="gradient text-white font-semibold px-6 py-2.5 rounded-lg">Cek Repo</a>
+          <a href="https://youtube.com" target="_blank" class="border-2 border-gray-300 text-gray-700 font-semibold px-6 py-2.5 rounded-lg hover:bg-gray-100">Cek YouTube</a>
+        </div>
+        <p class="text-xs text-gray-400 mt-6">Ada kendala? Hubungi kami.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let step = 1;
+
+    function generateConfig() {
+      const niche = document.getElementById('niche').value;
+      const audience = document.getElementById('audience').value;
+      const ch = document.getElementById('channelName').value || 'channel';
+      const lang = document.getElementById('language').value;
+      const dur = document.getElementById('duration').value || 60;
+      const tags = document.getElementById('tags').value.split(',').map(t => '"' + t.trim() + '"').join(', ');
+
+      return `niche: "${niche}"
+audience: "${audience}"
+language: ${lang}
+
+script:
+  model: llama-3.3-70b-versatile
+  target_seconds: ${dur}
+  words_per_second: 2.5
+
+voice:
+  provider: edge-tts
+  voice: id-ID-ArdiNeural
+  rate: "-12%"
+  pitch: "+0Hz"
+
+captions:
+  whisper_model: base
+  font: "Anton"
+  font_size: 90
+  primary_color: "&H00FFFFFF"
+  outline_color: "&H00000000"
+  outline: 6
+  words_per_caption: 3
+  position_y: 0.55
+
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+
+upload:
+  privacy: "public"
+  category_id: "27"
+  made_for_kids: false
+  channel: "${ch}"
+  default_tags: [${tags}]
+
+comments:
+  model: llama-3.1-8b-instant
+  poll_interval_minutes: 180
+  auto_reply: true
+  delete_spam: true`;
+    }
+
+    function updateChannelRefs(ch) {
+      const upper = ch.toUpperCase();
+      document.getElementById('repoNameDisplay').textContent = ch;
+      document.getElementById('repoNameClone').textContent = ch;
+      document.getElementById('repoNameClone2').textContent = ch;
+      document.getElementById('repoNameTermux').textContent = ch;
+      document.getElementById('repoNameTermux2').textContent = ch;
+      document.querySelectorAll('[id^="channelUpper"]').forEach(el => el.textContent = upper);
+      document.querySelectorAll('[id^="channelLower"]').forEach(el => el.textContent = ch);
+    }
+
+    function renderStep(s) {
+      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+      document.getElementById('step' + s).classList.add('active');
+
+      document.querySelectorAll('.step-dot').forEach((dot, i) => {
+        const num = i + 1;
+        dot.classList.remove('active', 'done');
+        if (num < s) { dot.classList.add('done'); dot.textContent = '✓'; }
+        else if (num === s) { dot.classList.add('active'); dot.textContent = num; }
+        else { dot.textContent = num; }
+      });
+
+      [1,2,3,4].forEach(i => {
+        const line = document.getElementById('line' + i);
+        if (line) { line.style.background = i < s ? '#10b981' : '#e5e7eb'; }
+      });
+
+      if (s === 2) {
+        document.getElementById('configOutput').textContent = generateConfig();
+        const ch = document.getElementById('channelName').value || 'channel';
+        updateChannelRefs(ch);
+      }
+    }
+
+    function nextStep() {
+      if (step < 5) { step++; renderStep(step); window.scrollTo(0, 0); }
+    }
+
+    function prevStep() {
+      if (step > 1) { step--; renderStep(step); window.scrollTo(0, 0); }
+    }
+
+    function copyConfig() {
+      const text = document.getElementById('configOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+
+    // Auto-update channel name references
+    document.getElementById('channelName').addEventListener('input', function() {
+      if (step === 2 || step === 3 || step === 4) {
+        const ch = this.value || 'channel';
+        updateChannelRefs(ch);
+      }
+      if (step === 2) document.getElementById('configOutput').textContent = generateConfig();
+    });
+  </script>
+</body>
+</html>
