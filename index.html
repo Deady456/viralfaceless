@@ -9,15 +9,19 @@
   <style>
     * { font-family: 'Inter', sans-serif; }
     .gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .gradient-text { background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
     .step-circle { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; }
+    .hero { position: relative; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=1200&q=80') center/cover; opacity: 0.15; }
+    .hero-content { position: relative; z-index: 1; }
+    .feature-img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
+    .step-img { width: 120px; height: 120px; object-fit: cover; border-radius: 16px; flex-shrink: 0; }
   </style>
 </head>
 <body class="bg-gray-50">
   <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <span class="text-xl font-bold">ViralFaceless</span>
+      <span class="text-xl font-bold"><span class="text-purple-600">Viral</span>Faceless</span>
       <div class="flex gap-4 text-sm font-medium text-gray-600">
         <a href="#fitur" class="hover:text-gray-900">Fitur</a>
         <a href="#harga" class="hover:text-gray-900">Harga</a>
@@ -27,50 +31,63 @@
     </div>
   </nav>
 
-  <section class="gradient text-white py-24">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Channel YouTube Faceless <br>Jalan Otomatis 24/7</h1>
-      <p class="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">Kami setup sistem upload video otomatis untuk channel YouTube kamu. Cukup tentukan topik, sisanya biar robot kerja.</p>
+  <section class="hero text-white py-28">
+    <div class="hero-content max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Channel YouTube Faceless <br>Jalan Otomatis 24/7</h1>
+      <p class="text-lg md:text-xl opacity-80 mb-8 max-w-2xl mx-auto">Kami setup sistem upload video otomatis untuk channel YouTube kamu. Cukup tentukan topik, sisanya biar robot kerja.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="wizard.html" class="bg-white text-gray-900 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 shadow-lg">Mulai Setup</a>
-        <a href="#cara" class="border-2 border-white/50 text-white px-8 py-3 rounded-lg hover:bg-white/10 font-semibold">Cara Kerja</a>
+        <a href="wizard.html" class="bg-white text-gray-900 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 shadow-lg">Mulai Sekarang</a>
+        <a href="#cara" class="border-2 border-white/30 text-white px-8 py-3 rounded-lg hover:bg-white/10 font-semibold">Cara Kerja</a>
       </div>
     </div>
   </section>
 
   <section id="fitur" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Kenapa ViralFaceless?</h2>
+      <h2 class="text-3xl font-bold text-center mb-4">Kenapa ViralFaceless?</h2>
+      <p class="text-gray-500 text-center mb-12 max-w-xl mx-auto">Bikin channel YouTube tanpa ribet urus teknis. Semua otomatis dari A sampai Z.</p>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#9889;</div>
-          <h3 class="font-bold text-lg mb-2">Auto Pilot</h3>
-          <p class="text-gray-600 text-sm">Script, suara, video, caption, upload — semua otomatis. Tinggal tentukan topik, sisanya biar sistem kerja.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="auto pilot" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">Auto Pilot</h3>
+            <p class="text-gray-600 text-sm">Script, suara, video, caption, upload — semua otomatis. Tinggal tentukan topik, sisanya biar sistem kerja.</p>
+          </div>
         </div>
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#128640;</div>
-          <h3 class="font-bold text-lg mb-2">100% Otomatis</h3>
-          <p class="text-gray-600 text-sm">Dari riset topik, nulis script, bikin video, sampai upload — semua tanpa campur tangan manual.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="otomatis" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">100% Otomatis</h3>
+            <p class="text-gray-600 text-sm">Dari riset topik, nulis script, bikin video, sampai upload — semua tanpa campur tangan manual.</p>
+          </div>
         </div>
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#128260;</div>
-          <h3 class="font-bold text-lg mb-2">Gampang Setup</h3>
-          <p class="text-gray-600 text-sm">Isi form nama channel dan topik. Kami kirimkan panduan langkah demi langkah. Selesai dalam 15 menit.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80" alt="setup" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">Gampang Setup</h3>
+            <p class="text-gray-600 text-sm">Isi form nama channel dan topik. Kami kirimkan panduan langkah demi langkah. Selesai dalam 15 menit.</p>
+          </div>
         </div>
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#128196;</div>
-          <h3 class="font-bold text-lg mb-2">Custom Topik</h3>
-          <p class="text-gray-600 text-sm">Bebas pilih niche: sains, sejarah, misteri, teknologi, anime, what-if, dll.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4f?w=600&q=80" alt="topik" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">Custom Topik</h3>
+            <p class="text-gray-600 text-sm">Bebas pilih niche: sains, sejarah, misteri, teknologi, anime, what-if, dan lainnya.</p>
+          </div>
         </div>
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#127910;</div>
-          <h3 class="font-bold text-lg mb-2">Video Shorts</h3>
-          <p class="text-gray-600 text-sm">Format vertikal 9:16, caption otomatis, background video berkualitas. Siap upload ke YouTube.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80" alt="shorts" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">Video Shorts</h3>
+            <p class="text-gray-600 text-sm">Format vertikal 9:16, caption otomatis, background video berkualitas. Siap upload ke YouTube.</p>
+          </div>
         </div>
-        <div class="p-6 rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-2xl mb-4">&#128279;</div>
-          <h3 class="font-bold text-lg mb-2">3x Sehari</h3>
-          <p class="text-gray-600 text-sm">Upload otomatis 3x sehari. Konsisten tanpa kamu pegang. Channel tetap aktif setiap hari.</p>
+        <div class=" rounded-xl border hover:shadow-lg transition overflow-hidden">
+          <img class="feature-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="konsisten" loading="lazy">
+          <div class="px-6 pb-6">
+            <h3 class="font-bold text-lg mb-2">3x Sehari</h3>
+            <p class="text-gray-600 text-sm">Upload otomatis 3x sehari. Konsisten tanpa kamu pegang. Channel tetap aktif setiap hari.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -118,21 +135,37 @@
       <h2 class="text-3xl font-bold text-center mb-4">Cara Kerja</h2>
       <p class="text-gray-500 text-center mb-12">Dari 0 ke channel jalan sendiri dalam 4 langkah</p>
       <div class="space-y-8">
-        <div class="flex gap-4 items-start">
-          <div class="step-circle gradient text-white shrink-0">1</div>
-          <div><h3 class="font-bold text-lg">Konsultasi & Brief</h3><p class="text-gray-600 text-sm">Hubungi kami, tentukan niche dan target audiens channel kamu.</p></div>
+        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+          <img class="step-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300&q=80" alt="konsultasi" loading="lazy">
+          <div>
+            <div class="step-circle gradient text-white mb-3">1</div>
+            <h3 class="font-bold text-lg">Konsultasi & Brief</h3>
+            <p class="text-gray-600 text-sm">Hubungi kami, tentukan niche dan target audiens channel kamu.</p>
+          </div>
         </div>
-        <div class="flex gap-4 items-start">
-          <div class="step-circle gradient text-white shrink-0">2</div>
-          <div><h3 class="font-bold text-lg">Kami Setup</h3><p class="text-gray-600 text-sm">Tim kami menyiapkan sistem backend, konfigurasi, dan infrastruktur upload.</p></div>
+        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+          <img class="step-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&q=80" alt="setup" loading="lazy">
+          <div>
+            <div class="step-circle gradient text-white mb-3">2</div>
+            <h3 class="font-bold text-lg">Kami Setup</h3>
+            <p class="text-gray-600 text-sm">Tim kami menyiapkan sistem backend, konfigurasi, dan infrastruktur upload.</p>
+          </div>
         </div>
-        <div class="flex gap-4 items-start">
-          <div class="step-circle gradient text-white shrink-0">3</div>
-          <div><h3 class="font-bold text-lg">Authorize</h3><p class="text-gray-600 text-sm">Kami kirim link authorize. Tinggal login Google dan izinkan akses.</p></div>
+        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+          <img class="step-img" src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=300&q=80" alt="authorize" loading="lazy">
+          <div>
+            <div class="step-circle gradient text-white mb-3">3</div>
+            <h3 class="font-bold text-lg">Authorize</h3>
+            <p class="text-gray-600 text-sm">Kami kirim link authorize. Tinggal login Google dan izinkan akses.</p>
+          </div>
         </div>
-        <div class="flex gap-4 items-start">
-          <div class="step-circle gradient text-white shrink-0">4</div>
-          <div><h3 class="font-bold text-lg">Aktif!</h3><p class="text-gray-600 text-sm">Channel kamu jalan. Upload otomatis tiap hari. Kami pantau & maintain.</p></div>
+        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+          <img class="step-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&q=80" alt="aktif" loading="lazy">
+          <div>
+            <div class="step-circle gradient text-white mb-3">4</div>
+            <h3 class="font-bold text-lg">Aktif!</h3>
+            <p class="text-gray-600 text-sm">Channel kamu jalan. Upload otomatis tiap hari. Kami pantau & maintain.</p>
+          </div>
         </div>
       </div>
     </div>
