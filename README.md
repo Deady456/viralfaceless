@@ -1,4 +1,4 @@
-# FreeFaceless
+# ViralFaceless
 
 Landing page + setup wizard untuk jasa setup channel YouTube faceless otomatis.
 
