@@ -16,17 +16,26 @@
     .hero-content { position: relative; z-index: 1; }
     .feature-img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
     .step-img { width: 120px; height: 120px; object-fit: cover; border-radius: 16px; flex-shrink: 0; }
+    @media (max-width: 640px) { .step-img { width: 80px; height: 80px; } }
+    .nav-menu { display: flex; gap: 0.5rem; align-items: center; }
+    @media (max-width: 640px) {
+      .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 1rem; border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+      .nav-menu.open { display: flex; }
+    }
   </style>
 </head>
 <body class="bg-gray-50">
   <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between relative">
       <span class="text-xl font-bold"><span class="text-purple-600">Viral</span>Faceless</span>
-      <div class="flex gap-4 text-sm font-medium text-gray-600">
-        <a href="#fitur" class="hover:text-gray-900">Fitur</a>
-        <a href="#harga" class="hover:text-gray-900">Harga</a>
-        <a href="#cara" class="hover:text-gray-900">Cara Kerja</a>
-        <a href="wizard.html" class="gradient text-white px-4 py-2 rounded-lg hover:opacity-90">Hubungi</a>
+      <button onclick="toggleNav()" class="sm:hidden p-2 text-gray-600 hover:text-gray-900">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div id="navMenu" class="nav-menu text-sm font-medium text-gray-600">
+        <a href="#fitur" class="hover:text-gray-900 sm:px-0 px-3 py-2">Fitur</a>
+        <a href="#harga" class="hover:text-gray-900 sm:px-0 px-3 py-2">Harga</a>
+        <a href="#cara" class="hover:text-gray-900 sm:px-0 px-3 py-2">Cara Kerja</a>
+        <a href="wizard.html" class="gradient text-white px-4 py-2 rounded-lg hover:opacity-90 text-center">Hubungi</a>
       </div>
     </div>
   </nav>
@@ -148,7 +157,7 @@
       <h2 class="text-3xl font-bold text-center mb-4">Cara Kerja</h2>
       <p class="text-gray-500 text-center mb-12">Dari 0 ke channel jalan sendiri dalam 4 langkah</p>
       <div class="space-y-8">
-        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center p-6 bg-gray-50 rounded-2xl">
           <img class="step-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300&q=80" alt="konsultasi" loading="lazy">
           <div>
             <div class="step-circle gradient text-white mb-3">1</div>
@@ -156,7 +165,7 @@
             <p class="text-gray-600 text-sm">Hubungi kami, tentukan niche dan target audiens channel kamu.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center p-6 bg-gray-50 rounded-2xl">
           <img class="step-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&q=80" alt="setup" loading="lazy">
           <div>
             <div class="step-circle gradient text-white mb-3">2</div>
@@ -164,7 +173,7 @@
             <p class="text-gray-600 text-sm">Tim kami menyiapkan sistem backend, konfigurasi, dan infrastruktur upload.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center p-6 bg-gray-50 rounded-2xl">
           <img class="step-img" src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=300&q=80" alt="authorize" loading="lazy">
           <div>
             <div class="step-circle gradient text-white mb-3">3</div>
@@ -172,7 +181,7 @@
             <p class="text-gray-600 text-sm">Kami kirim link authorize. Tinggal login Google dan izinkan akses.</p>
           </div>
         </div>
-        <div class="flex gap-6 items-center p-6 bg-gray-50 rounded-2xl">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center p-6 bg-gray-50 rounded-2xl">
           <img class="step-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&q=80" alt="aktif" loading="lazy">
           <div>
             <div class="step-circle gradient text-white mb-3">4</div>
@@ -188,5 +197,9 @@
     <p class="font-bold text-white text-lg mb-2">ViralFaceless</p>
     <p>Jasa setup channel YouTube faceless profesional</p>
   </footer>
+  <script>
+    function toggleNav() { document.getElementById('navMenu').classList.toggle('open'); }
+    document.querySelectorAll('#navMenu a[href^="#"]').forEach(a => a.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open')));
+  </script>
 </body>
 </html>
